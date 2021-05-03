@@ -19,23 +19,25 @@ TupleIDs = tuple(dict.fromkeys(ListIDs))
 
 with open('Hypo Proteins.txt', 'r') as e:
     f = e.read()
-
+    
+# NOTE: Matches all proteins in the hypothetical protein file
 Motif_Proteins = re.compile(r'''
     (WP_[0-9]+\.[0-9]).+\n
     (.+)\n
     ''', re.VERBOSE | re.M)
 
+# NOTE: Takes all matched hypothetical proteins and converts them into a dictionary 
 PMatches = Motif_Proteins.findall(f)
 result = {a: b for a, b in PMatches}
-
-# NOTE: for a, b in result.items():
-# NOTE: print(a, '|', b, sep="")
 
 print('\n')
 print('Proteins with sequnces over 850 amino acids in lenght:')
 
+# NOTE: Matches the acession number of proteins found by the external sowfare
+# NOTE: To their sequnce in the dictonary 
 values = list(map(result.get, TupleIDs))
 
+# NOTE: Prints the proteins found by the external sofware in a text file
 with open('Valid External Proteins.txt', 'w') as g:
     P = []
     for b in values:
