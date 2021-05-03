@@ -191,15 +191,18 @@ class Validate(object):
         ([0-9]+)\)\,                # NOTE: Matches for the end of Type2 Motif
         .+match\=\'([A-Z]+)\'.+\n   # NOTE: Matches for the Type 2 Motif
             ''', re.VERBOSE | re.M)
-
+    
+    # NOTE: Matches for accession numbers that being with "NP"
     NP = re.compile(r'''
             NP_[0-9]+\.[0-9]
                 ''', re.VERBOSE | re.M)
-
+    
+    # NOTE: Matches for accession numbers that being with "WP"
     WP = re.compile(r'''
             WP_[0-9]+\.[0-9]
                 ''', re.VERBOSE | re.M)
-
+    
+    # NOTE: Matches for accession numbers that being with "ALM"
     ALM = re.compile(r'''
             ALM[0-9]+\.[0-9]
                 ''', re.VERBOSE | re.M)
